@@ -1,0 +1,16 @@
+
+#exclude all user prefs
+/userPreferences*
+/Logs
+/Settings
+/Plugins
+*.4DB
+/Project/DerivedData/*
+*.4DD
+*.4DIndx
+*.4DIndy
+*.journal
+*.Match
+
+/Project/*.lnk
+/Project/Logs/*
