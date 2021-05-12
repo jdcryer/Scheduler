@@ -1,0 +1,474 @@
+﻿{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {
+				"Schedule_List": {
+					"type": "listbox",
+					"left": 30,
+					"top": 57,
+					"width": 280,
+					"height": 318,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.es_schedules",
+					"listboxType": "collection",
+					"currentItemSource": "Form:C1466.e_schedule",
+					"currentItemPositionSource": "Form:C1466.scheduleSelected",
+					"selectedItemsSource": "",
+					"selectionMode": "single",
+					"alternateFill": "#E4EBF3",
+					"columns": [
+						{
+							"header": {
+								"text": "Active",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "(This:C1470.status=1)",
+							"dataSourceTypeHint": "boolean",
+							"width": 50
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Schedule"
+							},
+							"name": "Column2",
+							"dataSource": "This:C1470.name",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 240
+						}
+					]
+				},
+				"Button": {
+					"type": "button",
+					"text": "Start Scheduler",
+					"top": 22,
+					"left": 79,
+					"width": 150,
+					"height": 25,
+					"events": [
+						"onClick"
+					]
+				},
+				"schedulerTabs": {
+					"type": "tab",
+					"text": "Tab control",
+					"top": 22,
+					"left": 330,
+					"width": 594,
+					"height": 395,
+					"action": "gotoPage",
+					"dataSourceTypeHint": "integer",
+					"dataSource": "hl_tabs"
+				},
+				"addSchedule": {
+					"type": "pictureButton",
+					"left": 30,
+					"top": 384,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/add.png"
+				},
+				"delSchedule": {
+					"type": "pictureButton",
+					"left": 68,
+					"top": 384,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/del.png"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Input": {
+					"type": "input",
+					"left": 491,
+					"top": 73,
+					"width": 227,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.name"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Name:",
+					"top": 74,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 491,
+					"top": 119,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.nextLaunch",
+					"dataSourceTypeHint": "date"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Next Launch",
+					"top": 98,
+					"left": 402,
+					"width": 102,
+					"height": 15,
+					"textAlign": "left",
+					"fontWeight": "bold"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Date:",
+					"top": 120,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 651,
+					"top": 119,
+					"width": 67,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.nextLaunch",
+					"dataSourceTypeHint": "time"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Time:",
+					"top": 120,
+					"left": 602,
+					"width": 42,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input3": {
+					"type": "input",
+					"left": 491,
+					"top": 149,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.detail.processSize",
+					"dataSourceTypeHint": "date"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Process Size:",
+					"top": 150,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input4": {
+					"type": "input",
+					"left": 491,
+					"top": 199,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.lastLaunch",
+					"dataSourceTypeHint": "date"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Last Launch",
+					"top": 178,
+					"left": 402,
+					"width": 102,
+					"height": 15,
+					"textAlign": "left",
+					"fontWeight": "bold"
+				},
+				"Text5": {
+					"type": "text",
+					"text": "Date:",
+					"top": 200,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input5": {
+					"type": "input",
+					"left": 651,
+					"top": 199,
+					"width": 67,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.lastLaunch",
+					"dataSourceTypeHint": "time"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Time:",
+					"top": 200,
+					"left": 602,
+					"width": 42,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input6": {
+					"type": "input",
+					"left": 491,
+					"top": 249,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.lastCompleted",
+					"dataSourceTypeHint": "date"
+				},
+				"Text8": {
+					"type": "text",
+					"text": "Last Completed\t",
+					"top": 228,
+					"left": 402,
+					"width": 102,
+					"height": 15,
+					"textAlign": "left",
+					"fontWeight": "bold"
+				},
+				"Text9": {
+					"type": "text",
+					"text": "Date:",
+					"top": 250,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Input7": {
+					"type": "input",
+					"left": 651,
+					"top": 249,
+					"width": 67,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.lastCompleted",
+					"dataSourceTypeHint": "time"
+				},
+				"Text10": {
+					"type": "text",
+					"text": "Time:",
+					"top": 250,
+					"left": 602,
+					"width": 42,
+					"height": 15,
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"Text11": {
+					"type": "text",
+					"text": "Frequency:",
+					"top": 74,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Popup Dropdown List": {
+					"type": "dropdown",
+					"left": 491,
+					"top": 69,
+					"width": 262,
+					"height": 25,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "at_frequency"
+				},
+				"Input8": {
+					"type": "input",
+					"left": 491,
+					"top": 119,
+					"width": 87,
+					"height": 16,
+					"dataSource": "Form:C1466.e_schedule.nextLaunch",
+					"dataSourceTypeHint": "date"
+				},
+				"Text12": {
+					"type": "text",
+					"text": "Every:",
+					"top": 120,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				}
+			}
+		},
+		{
+			"objects": {
+				"actionList": {
+					"type": "listbox",
+					"left": 350,
+					"top": 78,
+					"width": 270,
+					"height": 296,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.e_schedule.detail.tasks",
+					"listboxType": "collection",
+					"currentItemSource": "Form:C1466.vo_task",
+					"currentItemPositionSource": "Form:C1466.taskSelected",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"alternateFill": "#E4EBF3",
+					"columns": [
+						{
+							"header": {
+								"text": "Action",
+								"name": "Header3"
+							},
+							"name": "Column3",
+							"footer": {
+								"name": "Footer3"
+							},
+							"dataSource": "This:C1470.method",
+							"width": 180
+						},
+						{
+							"header": {
+								"name": "Header4",
+								"text": "No. Params"
+							},
+							"name": "Column4",
+							"dataSource": "This:C1470.parameters.length",
+							"dataSourceTypeHint": "number",
+							"footer": {
+								"name": "Footer4"
+							},
+							"width": 70
+						}
+					]
+				},
+				"Text13": {
+					"type": "text",
+					"text": "Parameters",
+					"top": 67,
+					"left": 643,
+					"width": 124,
+					"height": 15,
+					"fontWeight": "bold"
+				},
+				"Input9": {
+					"type": "input",
+					"left": 643,
+					"top": 96,
+					"width": 101,
+					"height": 16,
+					"fontTheme": "normal"
+				},
+				"Popup Dropdown List1": {
+					"type": "dropdown",
+					"left": 760,
+					"top": 96,
+					"width": 69,
+					"height": 16,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "at_paramType"
+				},
+				"addParam0": {
+					"type": "pictureButton",
+					"left": 861,
+					"top": 91,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/add.png"
+				},
+				"delParam0": {
+					"type": "pictureButton",
+					"left": 861,
+					"top": 131,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/del.png"
+				},
+				"addTask": {
+					"type": "pictureButton",
+					"left": 350,
+					"top": 384,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/add.png"
+				},
+				"delTask": {
+					"type": "pictureButton",
+					"left": 388,
+					"top": 384,
+					"width": 25,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/del.png"
+				}
+			}
+		}
+	],
+	"geometryStamp": 283,
+	"method": "method.4dm"
+}
