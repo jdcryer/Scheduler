@@ -1,0 +1,105 @@
+﻿{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "variable",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"taskChoiceList": {
+					"type": "listbox",
+					"left": 25,
+					"top": 66,
+					"width": 287,
+					"height": 322,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.vc_tasks",
+					"listboxType": "collection",
+					"selectionMode": "single",
+					"alternateFill": "#E8EDF4",
+					"columns": [
+						{
+							"header": {
+								"text": "X",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"dataSource": "This:C1470.selected",
+							"dataSourceTypeHint": "boolean",
+							"width": 40,
+							"footer": {
+								"name": "Footer1"
+							}
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "Task Name"
+							},
+							"name": "Column2",
+							"dataSource": "This:C1470.taskName",
+							"width": 250,
+							"footer": {
+								"name": "Footer2"
+							}
+						}
+					]
+				},
+				"taskFilter": {
+					"type": "input",
+					"left": 25,
+					"top": 25,
+					"width": 160,
+					"height": 16
+				},
+				"Button": {
+					"type": "button",
+					"text": "OK",
+					"top": 21,
+					"left": 232,
+					"width": 80,
+					"height": 25,
+					"events": [
+						"onClick"
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 17
+}
