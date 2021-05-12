@@ -342,6 +342,40 @@
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
+				},
+				"Text14": {
+					"type": "text",
+					"text": "Timing Detail",
+					"top": 218,
+					"left": 402,
+					"width": 102,
+					"height": 15,
+					"textAlign": "left",
+					"fontWeight": "bold"
+				},
+				"timingAt": {
+					"type": "radio",
+					"text": "At:",
+					"top": 247,
+					"left": 402,
+					"width": 102,
+					"height": 15,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "timingChoice"
+				},
+				"timingInterval": {
+					"type": "radio",
+					"text": "At Intervals of:",
+					"top": 247,
+					"left": 642,
+					"width": 102,
+					"height": 15,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "timingChoice"
 				}
 			}
 		},
@@ -469,6 +503,6 @@
 			}
 		}
 	],
-	"geometryStamp": 283,
+	"geometryStamp": 334,
 	"method": "method.4dm"
 }
