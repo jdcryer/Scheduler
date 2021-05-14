@@ -130,9 +130,9 @@
 			"objects": {
 				"Input": {
 					"type": "input",
-					"left": 491,
+					"left": 543,
 					"top": 73,
-					"width": 227,
+					"width": 247,
 					"height": 16,
 					"dataSource": "Form:C1466.e_schedule.name"
 				},
@@ -140,25 +140,28 @@
 					"type": "text",
 					"text": "Name:",
 					"top": 74,
-					"left": 402,
+					"left": 454,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input1": {
+				"input_next_launch_date": {
 					"type": "input",
-					"left": 491,
+					"left": 543,
 					"top": 119,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.nextLaunch",
-					"dataSourceTypeHint": "date"
+					"dataSource": "vd_next_launch",
+					"dataSourceTypeHint": "date",
+					"events": [
+						"onDataChange"
+					]
 				},
 				"Text1": {
 					"type": "text",
 					"text": "Next Launch",
 					"top": 98,
-					"left": 402,
+					"left": 454,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -168,61 +171,65 @@
 					"type": "text",
 					"text": "Date:",
 					"top": 120,
-					"left": 402,
+					"left": 454,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input2": {
+				"input_next_launch_time": {
 					"type": "input",
-					"left": 651,
+					"left": 723,
 					"top": 119,
 					"width": 67,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.nextLaunch",
-					"dataSourceTypeHint": "time"
+					"dataSource": "vh_next_launch",
+					"dataSourceTypeHint": "time",
+					"events": [
+						"onDataChange"
+					]
 				},
 				"Text6": {
 					"type": "text",
 					"text": "Time:",
 					"top": 120,
-					"left": 602,
+					"left": 674,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"Input3": {
 					"type": "input",
-					"left": 491,
-					"top": 149,
+					"left": 543,
+					"top": 151,
 					"width": 87,
 					"height": 16,
 					"dataSource": "Form:C1466.e_schedule.detail.processSize",
-					"dataSourceTypeHint": "date"
+					"dataSourceTypeHint": "number"
 				},
 				"Text3": {
 					"type": "text",
 					"text": "Process Size:",
-					"top": 150,
-					"left": 402,
+					"top": 152,
+					"left": 454,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"Input4": {
 					"type": "input",
-					"left": 491,
-					"top": 199,
+					"left": 543,
+					"top": 201,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.lastLaunch",
-					"dataSourceTypeHint": "date"
+					"dataSource": "vd_last_launch",
+					"dataSourceTypeHint": "date",
+					"enterable": false
 				},
 				"Text4": {
 					"type": "text",
 					"text": "Last Launch",
-					"top": 178,
-					"left": 402,
+					"top": 180,
+					"left": 454,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -231,44 +238,46 @@
 				"Text5": {
 					"type": "text",
 					"text": "Date:",
-					"top": 200,
-					"left": 402,
+					"top": 202,
+					"left": 454,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"Input5": {
 					"type": "input",
-					"left": 651,
-					"top": 199,
+					"left": 723,
+					"top": 201,
 					"width": 67,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.lastLaunch",
-					"dataSourceTypeHint": "time"
+					"dataSource": "vh_last_launch",
+					"dataSourceTypeHint": "time",
+					"enterable": false
 				},
 				"Text7": {
 					"type": "text",
 					"text": "Time:",
-					"top": 200,
-					"left": 602,
+					"top": 202,
+					"left": 674,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"Input6": {
 					"type": "input",
-					"left": 491,
-					"top": 249,
+					"left": 543,
+					"top": 251,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.lastCompleted",
-					"dataSourceTypeHint": "date"
+					"dataSource": "vd_last_completed",
+					"dataSourceTypeHint": "date",
+					"enterable": false
 				},
 				"Text8": {
 					"type": "text",
 					"text": "Last Completed\t",
-					"top": 228,
-					"left": 402,
+					"top": 230,
+					"left": 454,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -277,29 +286,49 @@
 				"Text9": {
 					"type": "text",
 					"text": "Date:",
-					"top": 250,
-					"left": 402,
+					"top": 252,
+					"left": 454,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"Input7": {
 					"type": "input",
-					"left": 651,
-					"top": 249,
+					"left": 723,
+					"top": 251,
 					"width": 67,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.lastCompleted",
-					"dataSourceTypeHint": "time"
+					"dataSource": "vh_last_completed",
+					"dataSourceTypeHint": "time",
+					"enterable": false
 				},
 				"Text10": {
 					"type": "text",
 					"text": "Time:",
-					"top": 250,
-					"left": 602,
+					"top": 252,
+					"left": 674,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
+				},
+				"PopupDate": {
+					"type": "subform",
+					"top": 119,
+					"left": 640,
+					"width": 19,
+					"height": 16,
+					"dataSource": "vd_next_launch",
+					"dataSourceTypeHint": "date",
+					"detailForm": "DateButton",
+					"deletableInList": false,
+					"doubleClickInRowAction": "editSubrecord",
+					"doubleClickInEmptyAreaAction": "addSubrecord",
+					"selectionMode": "multiple",
+					"printFrame": "variable",
+					"method": "ObjectMethods/PopupDate.4dm",
+					"events": [
+						"onLoad"
+					]
 				}
 			}
 		},
@@ -308,16 +337,16 @@
 				"Text11": {
 					"type": "text",
 					"text": "Frequency:",
-					"top": 74,
+					"top": 67,
 					"left": 402,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Popup Dropdown List": {
+				"dropdown_frequency": {
 					"type": "dropdown",
 					"left": 491,
-					"top": 69,
+					"top": 62,
 					"width": 262,
 					"height": 25,
 					"events": [
@@ -328,16 +357,16 @@
 				"Input8": {
 					"type": "input",
 					"left": 491,
-					"top": 119,
+					"top": 100,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.nextLaunch",
-					"dataSourceTypeHint": "date"
+					"dataSource": "Form:C1466.e_schedule.detail.frequency.every",
+					"dataSourceTypeHint": "number"
 				},
 				"Text12": {
 					"type": "text",
 					"text": "Every:",
-					"top": 120,
+					"top": 101,
 					"left": 402,
 					"width": 82,
 					"height": 15,
@@ -346,7 +375,7 @@
 				"Text14": {
 					"type": "text",
 					"text": "Timing Detail",
-					"top": 218,
+					"top": 287,
 					"left": 402,
 					"width": 102,
 					"height": 15,
@@ -356,26 +385,622 @@
 				"timingAt": {
 					"type": "radio",
 					"text": "At:",
-					"top": 247,
+					"top": 311,
 					"left": 402,
-					"width": 102,
+					"width": 84,
 					"height": 15,
 					"events": [
 						"onClick"
 					],
-					"radioGroup": "timingChoice"
+					"radioGroup": "timingChoice",
+					"dataSource": "Form:C1466.timingAt"
 				},
 				"timingInterval": {
 					"type": "radio",
 					"text": "At Intervals of:",
-					"top": 247,
+					"top": 311,
 					"left": 642,
 					"width": 102,
 					"height": 15,
 					"events": [
 						"onClick"
 					],
-					"radioGroup": "timingChoice"
+					"radioGroup": "timingChoice",
+					"dataSource": "Form:C1466.timingInterval"
+				},
+				"freq_daily_label": {
+					"type": "text",
+					"text": "Day(s)",
+					"top": 101,
+					"left": 597,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"freq_weekly_label": {
+					"type": "text",
+					"text": "Week(s)",
+					"top": 101,
+					"left": 597,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"freq_monthly_label": {
+					"type": "text",
+					"text": "Month(s)",
+					"top": 101,
+					"left": 597,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"input_frequency_time_at": {
+					"type": "input",
+					"left": 491,
+					"top": 310,
+					"width": 87,
+					"height": 16,
+					"dataSource": "vh_time_at",
+					"dataSourceTypeHint": "time"
+				},
+				"input_frequency_time_interval": {
+					"type": "input",
+					"left": 764,
+					"top": 310,
+					"width": 87,
+					"height": 16,
+					"dataSource": "vh_time_interval",
+					"dataSourceTypeHint": "time"
+				},
+				"input_frequency_time_interval_from": {
+					"type": "input",
+					"left": 764,
+					"top": 341,
+					"width": 87,
+					"height": 16,
+					"dataSource": "vh_time_interval_from",
+					"dataSourceTypeHint": "time"
+				},
+				"input_frequency_time_interval_to": {
+					"type": "input",
+					"left": 764,
+					"top": 373,
+					"width": 87,
+					"height": 16,
+					"dataSource": "vh_time_interval_to",
+					"dataSourceTypeHint": "time"
+				},
+				"Text15": {
+					"type": "text",
+					"text": "From:",
+					"top": 342,
+					"left": 658,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"Text16": {
+					"type": "text",
+					"text": "To:",
+					"top": 374,
+					"left": 658,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"freq_weekly_label_on": {
+					"type": "text",
+					"text": "On:",
+					"top": 133,
+					"left": 402,
+					"width": 82,
+					"height": 15,
+					"textAlign": "left"
+				},
+				"freq_weekly_button_1": {
+					"type": "button",
+					"text": "Monday",
+					"top": 130,
+					"left": 491,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_2": {
+					"type": "button",
+					"text": "Tuesday",
+					"top": 130,
+					"left": 581,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_3": {
+					"type": "button",
+					"text": "Wednesday",
+					"top": 130,
+					"left": 671,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_4": {
+					"type": "button",
+					"text": "Thrusday",
+					"top": 130,
+					"left": 761,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_5": {
+					"type": "button",
+					"text": "Friday",
+					"top": 152,
+					"left": 491,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_6": {
+					"type": "button",
+					"text": "Saturday",
+					"top": 152,
+					"left": 581,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_weekly_button_7": {
+					"type": "button",
+					"text": "Sunday",
+					"top": 152,
+					"left": 671,
+					"width": 89,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_on": {
+					"type": "radio",
+					"text": "On:",
+					"top": 133,
+					"left": 402,
+					"width": 84,
+					"height": 15,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "freqMonthly",
+					"dataSource": "Form:C1466.frequencyOn"
+				},
+				"freq_monthly_button_1": {
+					"type": "button",
+					"text": "1",
+					"top": 130,
+					"left": 491,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_2": {
+					"type": "button",
+					"text": "2",
+					"top": 130,
+					"left": 513,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_3": {
+					"type": "button",
+					"text": "3",
+					"top": 130,
+					"left": 535,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_4": {
+					"type": "button",
+					"text": "4",
+					"top": 130,
+					"left": 557,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_5": {
+					"type": "button",
+					"text": "5",
+					"top": 130,
+					"left": 579,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_6": {
+					"type": "button",
+					"text": "6",
+					"top": 130,
+					"left": 601,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_7": {
+					"type": "button",
+					"text": "7",
+					"top": 130,
+					"left": 623,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_8": {
+					"type": "button",
+					"text": "8",
+					"top": 152,
+					"left": 491,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_9": {
+					"type": "button",
+					"text": "9",
+					"top": 152,
+					"left": 513,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_10": {
+					"type": "button",
+					"text": "10",
+					"top": 152,
+					"left": 535,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_11": {
+					"type": "button",
+					"text": "11",
+					"top": 152,
+					"left": 557,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_12": {
+					"type": "button",
+					"text": "12",
+					"top": 152,
+					"left": 579,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_13": {
+					"type": "button",
+					"text": "13",
+					"top": 152,
+					"left": 601,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_14": {
+					"type": "button",
+					"text": "14",
+					"top": 152,
+					"left": 623,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_15": {
+					"type": "button",
+					"text": "15",
+					"top": 174,
+					"left": 491,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_16": {
+					"type": "button",
+					"text": "16",
+					"top": 174,
+					"left": 513,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_17": {
+					"type": "button",
+					"text": "17",
+					"top": 174,
+					"left": 535,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_18": {
+					"type": "button",
+					"text": "18",
+					"top": 174,
+					"left": 557,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_19": {
+					"type": "button",
+					"text": "19",
+					"top": 174,
+					"left": 579,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_20": {
+					"type": "button",
+					"text": "20",
+					"top": 174,
+					"left": 601,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_21": {
+					"type": "button",
+					"text": "21",
+					"top": 174,
+					"left": 623,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_22": {
+					"type": "button",
+					"text": "22",
+					"top": 196,
+					"left": 491,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_23": {
+					"type": "button",
+					"text": "23",
+					"top": 196,
+					"left": 513,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_24": {
+					"type": "button",
+					"text": "24",
+					"top": 196,
+					"left": 535,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_25": {
+					"type": "button",
+					"text": "25",
+					"top": 196,
+					"left": 557,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_26": {
+					"type": "button",
+					"text": "26",
+					"top": 196,
+					"left": 579,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_27": {
+					"type": "button",
+					"text": "27",
+					"top": 196,
+					"left": 601,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_28": {
+					"type": "button",
+					"text": "28",
+					"top": 196,
+					"left": 623,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_29": {
+					"type": "button",
+					"text": "29",
+					"top": 218,
+					"left": 491,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_30": {
+					"type": "button",
+					"text": "30",
+					"top": 218,
+					"left": 513,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_button_31": {
+					"type": "button",
+					"text": "31",
+					"top": 218,
+					"left": 535,
+					"width": 21,
+					"height": 21,
+					"events": [
+						"onClick"
+					],
+					"style": "roundedBevel"
+				},
+				"freq_monthly_on_the": {
+					"type": "radio",
+					"text": "On the:",
+					"top": 249,
+					"left": 402,
+					"width": 84,
+					"height": 15,
+					"events": [
+						"onClick"
+					],
+					"radioGroup": "freqMonthly",
+					"dataSource": "Form:C1466.frequencyOnThe"
+				},
+				"freq_monthly_day_num": {
+					"type": "dropdown",
+					"left": 491,
+					"top": 244,
+					"width": 162,
+					"height": 23,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "at_monthlyDayNum"
+				},
+				"freq_monthly_day_type": {
+					"type": "dropdown",
+					"left": 689,
+					"top": 244,
+					"width": 162,
+					"height": 23,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "at_monthlyDayType"
 				}
 			}
 		},
@@ -503,6 +1128,6 @@
 			}
 		}
 	],
-	"geometryStamp": 334,
+	"geometryStamp": 642,
 	"method": "method.4dm"
 }

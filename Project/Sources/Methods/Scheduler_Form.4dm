@@ -1,20 +1,251 @@
 //%attributes = {}
+C_OBJECT:C1216($1;$vo_formEvent)
+C_BOOLEAN:C305($vb_days;$vb_interval)
+C_LONGINT:C283($vl_fia)
+
 $vo_formEvent:=$1
+If (Not:C34(OB Is defined:C1231($vo_formEvent;"objectName")))
+	$vo_formEvent.objectName:="form"
+End if 
+
 Case of 
-	: ($vo_formEvent.code=On Load:K2:1)
-		C_LONGINT:C283(hl_tabs)
-		  //Set up Tabs
-		hl_tabs:=New list:C375
-		APPEND TO LIST:C376(hl_tabs;"General Settings";1)
-		APPEND TO LIST:C376(hl_tabs;"Schedule";2)
-		APPEND TO LIST:C376(hl_tabs;"Actions";3)
+	: ($vo_formEvent.objectName="form")
+		Case of 
+			: ($vo_formEvent.code=On Load:K2:1)
+				C_LONGINT:C283(hl_tabs)
+				  //Set up Tabs
+				hl_tabs:=New list:C375
+				APPEND TO LIST:C376(hl_tabs;"General Settings";1)
+				APPEND TO LIST:C376(hl_tabs;"Schedule";2)
+				APPEND TO LIST:C376(hl_tabs;"Actions";3)
+				
+				ARRAY TEXT:C222(at_paramType;0)
+				APPEND TO ARRAY:C911(at_paramType;"Text")
+				APPEND TO ARRAY:C911(at_paramType;"Integer")
+				APPEND TO ARRAY:C911(at_paramType;"Real")
+				APPEND TO ARRAY:C911(at_paramType;"Date")
+				APPEND TO ARRAY:C911(at_paramType;"Time")
+				APPEND TO ARRAY:C911(at_paramType;"Boolean")
+				
+				ARRAY TEXT:C222(at_frequency;0)
+				APPEND TO ARRAY:C911(at_frequency;"Daily")
+				APPEND TO ARRAY:C911(at_frequency;"Weekly")
+				APPEND TO ARRAY:C911(at_frequency;"Monthly")
+				
+				ARRAY TEXT:C222(at_monthlyDayType;0)
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Monday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Tuesday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Wednesday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Thursday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Friday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Saturday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Sunday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Day")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Weekday")
+				APPEND TO ARRAY:C911(at_monthlyDayType;"Weekend Day")
+				
+				ARRAY TEXT:C222(at_monthlyDayNum;0)
+				APPEND TO ARRAY:C911(at_monthlyDayNum;"First")
+				APPEND TO ARRAY:C911(at_monthlyDayNum;"Second")
+				APPEND TO ARRAY:C911(at_monthlyDayNum;"Third")
+				APPEND TO ARRAY:C911(at_monthlyDayNum;"Fourth")
+				APPEND TO ARRAY:C911(at_monthlyDayNum;"Last")
+				
+				at_frequency:=1
+				SCHEDULE_MANAGER_FREQ_CHANGE 
+				
+		End case 
 		
-		ARRAY TEXT:C222(at_paramType;0)
-		APPEND TO ARRAY:C911(at_paramType;"Text")
-		APPEND TO ARRAY:C911(at_paramType;"Integer")
-		APPEND TO ARRAY:C911(at_paramType;"Real")
-		APPEND TO ARRAY:C911(at_paramType;"Date")
-		APPEND TO ARRAY:C911(at_paramType;"Time")
-		APPEND TO ARRAY:C911(at_paramType;"Boolean")
+		
+	: ($vo_formEvent.objectName="Schedule_List")
+		Case of 
+			: ($vo_formEvent.code=On Selection Change:K2:29) | ($vo_formEvent.code=On Clicked:K2:4)
+				
+				If (Form:C1466.e_schedule#Null:C1517)
+					  //Fill form elements
+					$vl_fia:=Find in array:C230(at_frequency;Form:C1466.e_schedule.detail.frequency.period)
+					If ($vl_fia>0)
+						at_frequency:=$vl_fia
+					Else 
+						at_frequency:=0
+					End if 
+					
+					SCHEDULE_MANAGER_FREQ_CHANGE 
+					
+					Form:C1466.timingInterval:=0
+					Form:C1466.timingAt:=0
+					If (Form:C1466.e_schedule.detail.frequency.timing="time")
+						Form:C1466.timingAt:=1
+						OBJECT SET ENABLED:C1123(*;"input_frequency_time_at";True:C214)
+						OBJECT SET ENABLED:C1123(*;"input_frequency_time_interval@";False:C215)
+					Else 
+						Form:C1466.timingInterval:=1
+						OBJECT SET ENABLED:C1123(*;"input_frequency_time_at";False:C215)
+						OBJECT SET ENABLED:C1123(*;"input_frequency_time_interval@";True:C214)
+					End if 
+					
+					vh_time_at:=Time:C179(Form:C1466.e_schedule.detail.frequency.specifiedTime)
+					vh_time_interval:=Time:C179(Form:C1466.e_schedule.detail.frequency.interval)
+					vh_time_interval_from:=Time:C179(Form:C1466.e_schedule.detail.frequency.startTime)
+					vh_time_interval_to:=Time:C179(Form:C1466.e_schedule.detail.frequency.endTime)
+					
+					vh_next_launch:=Time:C179(Form:C1466.e_schedule.nextLaunch)
+					vh_last_launch:=Time:C179(Form:C1466.e_schedule.lastLaunch)
+					vh_last_completed:=Time:C179(Form:C1466.e_schedule.lastCompleted)
+					
+					vd_next_launch:=Date:C102(Form:C1466.e_schedule.nextLaunch)
+					vd_last_launch:=Date:C102(Form:C1466.e_schedule.lastLaunch)
+					vd_last_completed:=Date:C102(Form:C1466.e_schedule.lastCompleted)
+					
+				Else 
+					  //None selected, clear values and disable selection
+					at_frequency:=0
+					at_monthlyDayType:=0
+					at_monthlyDayNum:=0
+					
+					vh_time_at:=?00:00:00?
+					vh_time_interval:=?00:00:00?
+					vh_time_interval_from:=?00:00:00?
+					vh_time_interval_to:=?00:00:00?
+				End if 
+				
+		End case 
+		
+	: ($vo_formEvent.objectName="addSchedule")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				$e_schedule:=ds:C1482["schedule"].new()
+				$e_schedule.name:="New Schedule"
+				$e_schedule.detail:=New object:C1471
+				$e_schedule.detail.tasks:=New collection:C1472
+				$e_schedule.detail.processSize:=0
+				$e_schedule.detail.inactiveOnFailure:=False:C215
+				$e_schedule.detail.frequency:=New object:C1471
+				$e_schedule.detail.frequency.monthChoice:=""
+				$e_schedule.detail.frequency.period:="Daily"
+				$e_schedule.detail.frequency.every:=0
+				$e_schedule.detail.frequency.timing:=""
+				$e_schedule.detail.frequency.interval:=""
+				$e_schedule.detail.frequency.startTime:=""
+				$e_schedule.detail.frequency.endTime:=""
+				$e_schedule.detail.frequency.specifiedTime:=""
+				$e_schedule.detail.frequency.days:=New collection:C1472
+				$e_schedule.detail.frequency.onDay:=New object:C1471
+				$e_schedule.detail.frequency.onDay.dayNum:=""
+				$e_schedule.detail.frequency.onDay.dayType:=""
+				$e_schedule.save()
+				
+				Form:C1466.es_schedules.add($e_schedule)
+				Form:C1466.es_schedules:=Form:C1466.es_schedules
+		End case 
+		
+		
+	: ($vo_formEvent.objectName="delSchedule")
+		Case of 
+			: ($vo_formEvent.code=On Clicked:K2:4)
+				If (Form:C1466.e_schedule#Null:C1517)
+					  //Delete selected
+					
+				End if 
+		End case 
+		
+		
+	: ($vo_formEvent.objectName="input_next_launch_date") | ($vo_formEvent.objectName="input_next_launch_time")
+		If ($vo_formEvent.code=On Data Change:K2:15)
+			Form:C1466.e_schedule.nextLaunch:=String:C10(vd_next_launch;ISO date:K1:8;vh_next_launch)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="freq_monthly_button_@")
+		If ($vo_formEvent.code=On Clicked:K2:4)
+			$vl_buttonNum:=Num:C11(Replace string:C233($vo_formEvent.objectName;"freq_monthly_button_";""))
+			$vl_index:=Form:C1466.e_schedule.detail.frequency.days.indexOf($vl_buttonNum)
+			If ($vl_index=-1)
+				Form:C1466.e_schedule.detail.frequency.days.push($vl_buttonNum)
+				OBJECT SET RGB COLORS:C628(*;$vo_formEvent.objectName;"#0000FF";"#6DC9C5")
+			Else 
+				Form:C1466.e_schedule.detail.frequency.days.remove($vl_index)
+				OBJECT SET RGB COLORS:C628(*;$vo_formEvent.objectName;"#000000")
+			End if 
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="freq_weekly_button_@")
+		If ($vo_formEvent.code=On Clicked:K2:4)
+			$vl_buttonNum:=Num:C11(Replace string:C233($vo_formEvent.objectName;"freq_weekly_button_";""))
+			$vl_index:=Form:C1466.e_schedule.detail.frequency.days.indexOf($vl_buttonNum)
+			If ($vl_index=-1)
+				Form:C1466.e_schedule.detail.frequency.days.push($vl_buttonNum)
+				OBJECT SET RGB COLORS:C628(*;$vo_formEvent.objectName;"#0000FF";"#6DC9C5")
+			Else 
+				Form:C1466.e_schedule.detail.frequency.days.remove($vl_index)
+				OBJECT SET RGB COLORS:C628(*;$vo_formEvent.objectName;"#000000")
+			End if 
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="freq_monthly_on") | ($vo_formEvent.objectName="freq_monthly_on_the")
+		If ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+			$vb_days:=(Form:C1466.frequencyOn=1)
+			
+			Form:C1466.e_schedule.detail.frequency.monthChoice:=Choose:C955($vb_days;"days";"onDay")
+			
+			OBJECT SET ENABLED:C1123(*;"freq_monthly_day_@";Not:C34($vb_days))
+			OBJECT SET ENABLED:C1123(*;"freq_monthly_button_@";$vb_days)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="freq_monthly_day_num")
+		If ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+			Form:C1466.e_schedule.detail.frequency.onDay.dayNum:=at_monthlyDayNum{at_monthlyDayNum}
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="freq_monthly_day_type")
+		If ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+			Form:C1466.e_schedule.detail.frequency.onDay.dayNum:=at_monthlyDayType{at_monthlyDayType}
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="dropdown_frequency")
+		If ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+			Form:C1466.e_schedule.detail.frequency.period:=at_frequency{at_frequency}
+			SCHEDULE_MANAGER_FREQ_CHANGE 
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="timingInterval") | ($vo_formEvent.objectName="timingAt")
+		If ($vo_formEvent.code=On Data Change:K2:15) | ($vo_formEvent.code=On Clicked:K2:4)
+			$vb_interval:=(Form:C1466.timingInterval=1)
+			
+			Form:C1466.e_schedule.detail.frequency.timing:=Choose:C955($vb_interval;"periodic";"time")
+			
+			OBJECT SET ENABLED:C1123(*;"input_frequency_time_at";Not:C34($vb_interval))
+			OBJECT SET ENABLED:C1123(*;"input_frequency_time_interval@";$vb_interval)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="input_frequency_time_at")
+		If ($vo_formEvent.code=On Data Change:K2:15)
+			Form:C1466.e_schedule.detail.frequency.specifiedTime:=String:C10(Form:C1466.time_at;HH MM:K7:2)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="input_frequency_time_interval")
+		If ($vo_formEvent.code=On Data Change:K2:15)
+			Form:C1466.e_schedule.detail.frequency.interval:=String:C10(Form:C1466.time_interval;HH MM:K7:2)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="input_frequency_time_interval_from")
+		If ($vo_formEvent.code=On Data Change:K2:15)
+			Form:C1466.e_schedule.detail.frequency.startTime:=String:C10(Form:C1466.time_interval_from;HH MM:K7:2)
+		End if 
+		
+		
+	: ($vo_formEvent.objectName="input_frequency_time_interval_to")
+		If ($vo_formEvent.code=On Data Change:K2:15)
+			Form:C1466.e_schedule.detail.frequency.endTime:=String:C10(Form:C1466.time_interval_to;HH MM:K7:2)
+		End if 
 		
 End case 
