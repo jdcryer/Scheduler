@@ -52,19 +52,24 @@
 					"selectedItemsSource": "",
 					"selectionMode": "single",
 					"alternateFill": "#E4EBF3",
+					"resizingMode": "rightToLeft",
 					"columns": [
 						{
 							"header": {
 								"text": "Active",
 								"name": "Header1"
 							},
-							"name": "Column1",
+							"name": "column_schedule_status",
 							"footer": {
 								"name": "Footer1"
 							},
 							"dataSource": "(This:C1470.status=1)",
 							"dataSourceTypeHint": "boolean",
-							"width": 50
+							"width": 50,
+							"events": [
+								"onClick"
+							],
+							"enterable": false
 						},
 						{
 							"header": {
@@ -76,7 +81,8 @@
 							"footer": {
 								"name": "Footer2"
 							},
-							"width": 240
+							"width": 213,
+							"enterable": false
 						}
 					]
 				},
@@ -128,7 +134,7 @@
 		},
 		{
 			"objects": {
-				"Input": {
+				"input_name": {
 					"type": "input",
 					"left": 543,
 					"top": 73,
@@ -197,7 +203,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input3": {
+				"input_process_size": {
 					"type": "input",
 					"left": 543,
 					"top": 151,
@@ -215,7 +221,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input4": {
+				"non_input_launch_date": {
 					"type": "input",
 					"left": 543,
 					"top": 201,
@@ -244,7 +250,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input5": {
+				"non_input_launch_time": {
 					"type": "input",
 					"left": 723,
 					"top": 201,
@@ -263,7 +269,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input6": {
+				"non_input_complete_date": {
 					"type": "input",
 					"left": 543,
 					"top": 251,
@@ -292,7 +298,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"Input7": {
+				"non_input_complete_time": {
 					"type": "input",
 					"left": 723,
 					"top": 251,
@@ -311,7 +317,7 @@
 					"height": 15,
 					"textAlign": "left"
 				},
-				"PopupDate": {
+				"popup_launch_date": {
 					"type": "subform",
 					"top": 119,
 					"left": 640,
@@ -325,7 +331,7 @@
 					"doubleClickInEmptyAreaAction": "addSubrecord",
 					"selectionMode": "multiple",
 					"printFrame": "variable",
-					"method": "ObjectMethods/PopupDate.4dm",
+					"method": "ObjectMethods/popup_launch_date.4dm",
 					"events": [
 						"onLoad"
 					]
@@ -354,7 +360,7 @@
 					],
 					"dataSource": "at_frequency"
 				},
-				"Input8": {
+				"input_frequency": {
 					"type": "input",
 					"left": 491,
 					"top": 100,
@@ -1006,7 +1012,7 @@
 		},
 		{
 			"objects": {
-				"actionList": {
+				"lb_tasks": {
 					"type": "listbox",
 					"left": 350,
 					"top": 78,
@@ -1036,7 +1042,8 @@
 								"name": "Footer3"
 							},
 							"dataSource": "This:C1470.method",
-							"width": 180
+							"width": 180,
+							"enterable": false
 						},
 						{
 							"header": {
@@ -1049,7 +1056,8 @@
 							"footer": {
 								"name": "Footer4"
 							},
-							"width": 70
+							"width": 70,
+							"enterable": false
 						}
 					]
 				},
@@ -1062,29 +1070,10 @@
 					"height": 15,
 					"fontWeight": "bold"
 				},
-				"Input9": {
-					"type": "input",
-					"left": 643,
-					"top": 96,
-					"width": 101,
-					"height": 16,
-					"fontTheme": "normal"
-				},
-				"Popup Dropdown List1": {
-					"type": "dropdown",
-					"left": 760,
-					"top": 96,
-					"width": 69,
-					"height": 16,
-					"events": [
-						"onDataChange"
-					],
-					"dataSource": "at_paramType"
-				},
-				"addParam0": {
+				"addParam": {
 					"type": "pictureButton",
-					"left": 861,
-					"top": 91,
+					"left": 643,
+					"top": 384,
 					"width": 25,
 					"height": 25,
 					"events": [
@@ -1092,10 +1081,10 @@
 					],
 					"picture": "/RESOURCES/images/add.png"
 				},
-				"delParam0": {
+				"delParam": {
 					"type": "pictureButton",
-					"left": 861,
-					"top": 131,
+					"left": 681,
+					"top": 384,
 					"width": 25,
 					"height": 25,
 					"events": [
@@ -1124,10 +1113,65 @@
 						"onClick"
 					],
 					"picture": "/RESOURCES/images/del.png"
+				},
+				"lb_parameters": {
+					"type": "listbox",
+					"left": 643,
+					"top": 92,
+					"width": 260,
+					"height": 282,
+					"events": [
+						"onClick",
+						"onHeaderClick",
+						"onDataChange",
+						"onSelectionChange"
+					],
+					"dataSource": "Form:C1466.vo_task.parameters",
+					"listboxType": "collection",
+					"currentItemSource": "Form:C1466.vo_parameter",
+					"currentItemPositionSource": "Form:C1466.parameterSelected",
+					"selectionMode": "single",
+					"scrollbarHorizontal": "hidden",
+					"alternateFill": "#E4EBF3",
+					"columns": [
+						{
+							"header": {
+								"text": "Value",
+								"name": "Header5"
+							},
+							"name": "column_parameter_value",
+							"footer": {
+								"name": "Footer5"
+							},
+							"dataSource": "This:C1470.displayValue",
+							"width": 168,
+							"events": [
+								"onClick"
+							],
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header6",
+								"text": "Type"
+							},
+							"name": "column_parameter_type",
+							"dataSource": "This:C1470.type",
+							"dataSourceTypeHint": "number",
+							"footer": {
+								"name": "Footer6"
+							},
+							"width": 70,
+							"events": [
+								"onClick"
+							],
+							"enterable": false
+						}
+					]
 				}
 			}
 		}
 	],
-	"geometryStamp": 642,
+	"geometryStamp": 668,
 	"method": "method.4dm"
 }
