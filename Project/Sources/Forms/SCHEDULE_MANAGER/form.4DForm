@@ -69,7 +69,8 @@
 							"events": [
 								"onClick"
 							],
-							"enterable": false
+							"enterable": false,
+							"textAlign": "center"
 						},
 						{
 							"header": {
@@ -117,7 +118,9 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png"
+					"picture": "/RESOURCES/images/add.png",
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				},
 				"delSchedule": {
 					"type": "pictureButton",
@@ -128,7 +131,9 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png"
+					"picture": "/RESOURCES/images/del.png",
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				}
 			}
 		},
@@ -1079,7 +1084,9 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png"
+					"picture": "/RESOURCES/images/add.png",
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				},
 				"delParam": {
 					"type": "pictureButton",
@@ -1090,7 +1097,9 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png"
+					"picture": "/RESOURCES/images/del.png",
+					"switchBackWhenReleased": true,
+					"loopBackToFirstFrame": true
 				},
 				"addTask": {
 					"type": "pictureButton",
@@ -1101,7 +1110,10 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png"
+					"picture": "/RESOURCES/images/add.png",
+					"switchContinuously": false,
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				},
 				"delTask": {
 					"type": "pictureButton",
@@ -1112,7 +1124,9 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png"
+					"picture": "/RESOURCES/images/del.png",
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				},
 				"lb_parameters": {
 					"type": "listbox",

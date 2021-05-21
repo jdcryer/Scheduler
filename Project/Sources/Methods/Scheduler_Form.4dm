@@ -2,7 +2,7 @@
 C_OBJECT:C1216($1;$vo_formEvent)
 C_OBJECT:C1216($e_deleteEntity;$e_schedule;$vo_status)
 C_BOOLEAN:C305($vb_days;$vb_interval;$vb_OK)
-C_LONGINT:C283($vl_fia;$vl_value)
+C_LONGINT:C283($vl_fia;$vl_value;$col;$row)
 C_TEXT:C284($vt_value)
 C_REAL:C285($vr_value)
 C_TIME:C306($vh_value)
@@ -78,6 +78,13 @@ Case of
 			: ($vo_formEvent.code=On Selection Change:K2:29) | ($vo_formEvent.code=On Clicked:K2:4)
 				
 				If (Form:C1466.e_schedule#Null:C1517)
+					
+					LISTBOX GET CELL POSITION:C971(*;"Schedule_List";$col;$row)
+					If ($col=1)
+						Form:C1466.e_schedule.status:=Choose:C955((Form:C1466.e_schedule.status=1);0;1)
+						Form:C1466.e_schedule.save()
+						Form:C1466.es_schedule:=Form:C1466.es_schedule
+					End if 
 					  //Fill form elements
 					$vl_fia:=Find in array:C230(at_frequency;Form:C1466.e_schedule.detail.frequency.period)
 					If ($vl_fia>0)
@@ -235,159 +242,154 @@ Case of
 		End if 
 		
 		
-	: ($vo_formEvent.objectName="column_parameter_value")
-		If ($vo_formEvent.code=On Clicked:K2:4)
-			If (Form:C1466.vo_parameter#Null:C1517)
-				  //Show value entry according to selected type
-				
-				If (Storage:C1525.sch.intIsInstalled)
-					Case of 
-						: (Form:C1466.vo_parameter.type="Text")
-							$vt_value:=Form:C1466.vo_parameter.value
-							EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vt_value;"Please enter the parameter value")
-							If ($vb_OK)
-								Form:C1466.vo_parameter.value:=$vt_value
-								Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Integer")
-							$vl_value:=Form:C1466.vo_parameter.value
-							EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vl_value;"Please enter the parameter value")
-							If ($vb_OK)
-								Form:C1466.vo_parameter.value:=$vl_value
-								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Real")
-							$vr_value:=Form:C1466.vo_parameter.value
-							EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vr_value;"Please enter the parameter value")
-							If ($vb_OK)
-								Form:C1466.vo_parameter.value:=$vr_value
-								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Date")
-							$vd_value:=Form:C1466.vo_parameter.value
-							EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vd_value;"Please enter the parameter value")
-							If ($vb_OK)
-								Form:C1466.vo_parameter.value:=$vd_value
-								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Time")
-							$vh_value:=Form:C1466.vo_parameter.value
-							EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vh_value;"Please enter the parameter value")
-							If ($vb_OK)
-								Form:C1466.vo_parameter.value:=$vh_value
-								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Boolean")
-							$m_boolMenu:=Create menu:C408
-							APPEND MENU ITEM:C411($m_boolMenu;"True")
-							SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"True")
-							APPEND MENU ITEM:C411($m_boolMenu;"False")
-							SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"False")
-							
-							$vt_selected:=Dynamic pop up menu:C1006($m_boolMenu)
-							If ($vt_selected#"")
-								Form:C1466.vo_parameter.displayValue:=$vt_selected
-								Form:C1466.vo_parameter.value:=Choose:C955(($vt_selected="True");True:C214;False:C215)
-							End if 
-					End case 
+	: ($vo_formEvent.objectName="lb_parameters")
+		LISTBOX GET CELL POSITION:C971(*;"lb_parameters";$col;$row)
+		If (Form:C1466.vo_parameter#Null:C1517)
+			Case of 
+				: ($col=1)  //column_parameter_value
+					  //Show value entry according to selected type
+					If (Storage:C1525.sch.intIsInstalled)
+						Case of 
+							: (Form:C1466.vo_parameter.type="Text")
+								$vt_value:=Form:C1466.vo_parameter.value
+								EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vt_value;"Please enter the parameter value")
+								If ($vb_OK)
+									Form:C1466.vo_parameter.value:=$vt_value
+									Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Integer")
+								$vl_value:=Form:C1466.vo_parameter.value
+								EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vl_value;"Please enter the parameter value")
+								If ($vb_OK)
+									Form:C1466.vo_parameter.value:=$vl_value
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Real")
+								$vr_value:=Form:C1466.vo_parameter.value
+								EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vr_value;"Please enter the parameter value")
+								If ($vb_OK)
+									Form:C1466.vo_parameter.value:=$vr_value
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Date")
+								$vd_value:=Form:C1466.vo_parameter.value
+								EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vd_value;"Please enter the parameter value")
+								If ($vb_OK)
+									Form:C1466.vo_parameter.value:=$vd_value
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Time")
+								$vh_value:=Form:C1466.vo_parameter.value
+								EXECUTE METHOD:C1007("INT_Request";$vb_OK;->$vh_value;"Please enter the parameter value")
+								If ($vb_OK)
+									Form:C1466.vo_parameter.value:=$vh_value
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Boolean")
+								$m_boolMenu:=Create menu:C408
+								APPEND MENU ITEM:C411($m_boolMenu;"True")
+								SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"True")
+								APPEND MENU ITEM:C411($m_boolMenu;"False")
+								SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"False")
+								
+								$vt_selected:=Dynamic pop up menu:C1006($m_boolMenu)
+								If ($vt_selected#"")
+									Form:C1466.vo_parameter.displayValue:=$vt_selected
+									Form:C1466.vo_parameter.value:=Choose:C955(($vt_selected="True");True:C214;False:C215)
+								End if 
+						End case 
+						
+					Else 
+						Case of 
+							: (Form:C1466.vo_parameter.type="Text")
+								$vt_value:=Request:C163("Please enter the parameter value";Form:C1466.vo_parameter.value)
+								If (OK=1)
+									Form:C1466.vo_parameter.value:=$vt_value
+									Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Integer")
+								$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
+								If (OK=1)
+									Form:C1466.vo_parameter.value:=Int:C8(Num:C11($vt_value))
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Real")
+								$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
+								If (OK=1)
+									Form:C1466.vo_parameter.value:=Num:C11($vt_value)
+									Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Date")
+								$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
+								If (OK=1)
+									Form:C1466.vo_parameter.value:=Date:C102($vt_value)
+									Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Time")
+								$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
+								If (OK=1)
+									Form:C1466.vo_parameter.value:=Time:C179($vt_value)
+									Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
+								End if 
+								
+							: (Form:C1466.vo_parameter.type="Boolean")
+								$m_boolMenu:=Create menu:C408
+								APPEND MENU ITEM:C411($m_boolMenu;"True")
+								SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"True")
+								APPEND MENU ITEM:C411($m_boolMenu;"False")
+								SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"False")
+								
+								$vt_selected:=Dynamic pop up menu:C1006($m_boolMenu)
+								If ($vt_selected#"")
+									Form:C1466.vo_parameter.displayValue:=$vt_selected
+									Form:C1466.vo_parameter.value:=Choose:C955(($vt_selected="True");True:C214;False:C215)
+								End if 
+						End case 
+					End if 
 					
-				Else 
-					Case of 
-						: (Form:C1466.vo_parameter.type="Text")
-							$vt_value:=Request:C163("Please enter the parameter value";Form:C1466.vo_parameter.value)
-							If (OK=1)
-								Form:C1466.vo_parameter.value:=$vt_value
+				: ($col=2)  //column_parameter_type
+					$vt_selected:=Dynamic pop up menu:C1006(Form:C1466.paramTypeMenu)
+					If ($vt_selected#"")
+						Form:C1466.vo_parameter.type:=$vt_selected
+						Case of 
+							: (Form:C1466.vo_parameter.type="Text")
+								Form:C1466.vo_parameter.value:=String:C10(Form:C1466.vo_parameter.value)
 								Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Integer")
-							$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
-							If (OK=1)
-								Form:C1466.vo_parameter.value:=Int:C8(Num:C11($vt_value))
+								
+							: (Form:C1466.vo_parameter.type="Integer")
+								Form:C1466.vo_parameter.value:=Int:C8(Num:C11(Form:C1466.vo_parameter.value))
 								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Real")
-							$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
-							If (OK=1)
-								Form:C1466.vo_parameter.value:=Num:C11($vt_value)
+								
+							: (Form:C1466.vo_parameter.type="Real")
+								Form:C1466.vo_parameter.value:=Num:C11(Form:C1466.vo_parameter.value)
 								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Date")
-							$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
-							If (OK=1)
-								Form:C1466.vo_parameter.value:=Date:C102($vt_value)
-								Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Time")
-							$vt_value:=Request:C163("Please enter the parameter value";String:C10(Form:C1466.vo_parameter.value))
-							If (OK=1)
-								Form:C1466.vo_parameter.value:=Time:C179($vt_value)
-								Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
-							End if 
-							
-						: (Form:C1466.vo_parameter.type="Boolean")
-							$m_boolMenu:=Create menu:C408
-							APPEND MENU ITEM:C411($m_boolMenu;"True")
-							SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"True")
-							APPEND MENU ITEM:C411($m_boolMenu;"False")
-							SET MENU ITEM PARAMETER:C1004($m_boolMenu;-1;"False")
-							
-							$vt_selected:=Dynamic pop up menu:C1006($m_boolMenu)
-							If ($vt_selected#"")
-								Form:C1466.vo_parameter.displayValue:=$vt_selected
-								Form:C1466.vo_parameter.value:=Choose:C955(($vt_selected="True");True:C214;False:C215)
-							End if 
-					End case 
-				End if 
-			End if 
+								
+								
+							: (Form:C1466.vo_parameter.type="Date")
+								Form:C1466.vo_parameter.value:=Date:C102(Form:C1466.vo_parameter.value)
+								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								
+							: (Form:C1466.vo_parameter.type="Time")
+								Form:C1466.vo_parameter.value:=Time:C179(Form:C1466.vo_parameter.value)
+								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								
+							: (Form:C1466.vo_parameter.type="Boolean")
+								Form:C1466.vo_parameter.value:=False:C215
+								Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
+								
+						End case 
+					End if 
+			End case 
 		End if 
-		
-		
-	: ($vo_formEvent.objectName="column_parameter_type")
-		If ($vo_formEvent.code=On Clicked:K2:4)
-			If (Form:C1466.vo_parameter#Null:C1517)
-				$vt_selected:=Dynamic pop up menu:C1006(Form:C1466.paramTypeMenu)
-				If ($vt_selected#"")
-					Form:C1466.vo_parameter.type:=$vt_selected
-					Case of 
-						: (Form:C1466.vo_parameter.type="Text")
-							Form:C1466.vo_parameter.value:=String:C10(Form:C1466.vo_parameter.value)
-							Form:C1466.vo_parameter.displayValue:=Form:C1466.vo_parameter.value
-							
-						: (Form:C1466.vo_parameter.type="Integer")
-							Form:C1466.vo_parameter.value:=Int:C8(Num:C11(Form:C1466.vo_parameter.value))
-							Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							
-						: (Form:C1466.vo_parameter.type="Real")
-							Form:C1466.vo_parameter.value:=Num:C11(Form:C1466.vo_parameter.value)
-							Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							
-							
-						: (Form:C1466.vo_parameter.type="Date")
-							Form:C1466.vo_parameter.value:=Date:C102(Form:C1466.vo_parameter.value)
-							Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							
-						: (Form:C1466.vo_parameter.type="Time")
-							Form:C1466.vo_parameter.value:=Time:C179(Form:C1466.vo_parameter.value)
-							Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							
-						: (Form:C1466.vo_parameter.type="Boolean")
-							Form:C1466.vo_parameter.value:=False:C215
-							Form:C1466.vo_parameter.displayValue:=String:C10(Form:C1466.vo_parameter.value)
-							
-					End case 
-				End if 
-			End if 
-		End if 
-		
 		
 	: ($vo_formEvent.objectName="input_next_launch_date") | ($vo_formEvent.objectName="input_next_launch_time")
 		If ($vo_formEvent.code=On Data Change:K2:15)
