@@ -13,20 +13,21 @@
 	"bottomMargin": 20,
 	"events": [
 		"onLoad",
-		"onPageChange",
 		"onValidate",
 		"onClick",
-		"onDoubleClick",
 		"onOutsideCall",
-		"onBeginDragOver",
-		"onDragOver",
+		"onDoubleClick",
 		"onDrop",
-		"onAfterKeystroke",
 		"onMenuSelect",
 		"onPluginArea",
-		"onAfterEdit",
+		"onDataChange",
+		"onDragOver",
 		"onTimer",
-		"onBoundVariableChange"
+		"onAfterKeystroke",
+		"onAfterEdit",
+		"onBeginDragOver",
+		"onBoundVariableChange",
+		"onPageChange"
 	],
 	"windowTitle": "window title",
 	"destination": "detailScreen",
@@ -48,7 +49,7 @@
 					"dataSource": "Form:C1466.es_schedules",
 					"listboxType": "collection",
 					"currentItemSource": "Form:C1466.e_schedule",
-					"currentItemPositionSource": "Form:C1466.scheduleSelected",
+					"currentItemPositionSource": "Form:C1466.scheduleSelectedIndex",
 					"selectedItemsSource": "",
 					"selectionMode": "single",
 					"alternateFill": "#E4EBF3",
@@ -134,6 +135,19 @@
 					"picture": "/RESOURCES/images/del.png",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
+				},
+				"saveSchedule": {
+					"type": "pictureButton",
+					"left": 848,
+					"top": 384,
+					"width": 55,
+					"height": 25,
+					"events": [
+						"onClick"
+					],
+					"picture": "/RESOURCES/images/save.png",
+					"loopBackToFirstFrame": true,
+					"switchBackWhenReleased": true
 				}
 			}
 		},
@@ -145,7 +159,10 @@
 					"top": 73,
 					"width": 247,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.name"
+					"dataSource": "Form:C1466.selectedSchedule.name",
+					"events": [
+						"onDataChange"
+					]
 				},
 				"Text": {
 					"type": "text",
@@ -214,8 +231,11 @@
 					"top": 151,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.detail.processSize",
-					"dataSourceTypeHint": "number"
+					"dataSource": "Form:C1466.selectedSchedule.detail.processSize",
+					"dataSourceTypeHint": "number",
+					"events": [
+						"onDataChange"
+					]
 				},
 				"Text3": {
 					"type": "text",
@@ -336,7 +356,6 @@
 					"doubleClickInEmptyAreaAction": "addSubrecord",
 					"selectionMode": "multiple",
 					"printFrame": "variable",
-					"method": "ObjectMethods/popup_launch_date.4dm",
 					"events": [
 						"onLoad"
 					]
@@ -371,7 +390,7 @@
 					"top": 100,
 					"width": 87,
 					"height": 16,
-					"dataSource": "Form:C1466.e_schedule.detail.frequency.every",
+					"dataSource": "Form:C1466.selectedSchedule.detail.frequency.every",
 					"dataSourceTypeHint": "number"
 				},
 				"Text12": {
@@ -467,7 +486,7 @@
 				"input_frequency_time_interval_from": {
 					"type": "input",
 					"left": 764,
-					"top": 341,
+					"top": 336,
 					"width": 87,
 					"height": 16,
 					"dataSource": "vh_time_interval_from",
@@ -476,7 +495,7 @@
 				"input_frequency_time_interval_to": {
 					"type": "input",
 					"left": 764,
-					"top": 373,
+					"top": 362,
 					"width": 87,
 					"height": 16,
 					"dataSource": "vh_time_interval_to",
@@ -485,7 +504,7 @@
 				"Text15": {
 					"type": "text",
 					"text": "From:",
-					"top": 342,
+					"top": 337,
 					"left": 658,
 					"width": 82,
 					"height": 15,
@@ -494,7 +513,7 @@
 				"Text16": {
 					"type": "text",
 					"text": "To:",
-					"top": 374,
+					"top": 363,
 					"left": 658,
 					"width": 82,
 					"height": 15,
@@ -1029,7 +1048,7 @@
 						"onDataChange",
 						"onSelectionChange"
 					],
-					"dataSource": "Form:C1466.e_schedule.detail.tasks",
+					"dataSource": "Form:C1466.selectedSchedule.detail.tasks",
 					"listboxType": "collection",
 					"currentItemSource": "Form:C1466.vo_task",
 					"currentItemPositionSource": "Form:C1466.taskSelected",
@@ -1186,6 +1205,6 @@
 			}
 		}
 	],
-	"geometryStamp": 668,
+	"geometryStamp": 719,
 	"method": "method.4dm"
 }
