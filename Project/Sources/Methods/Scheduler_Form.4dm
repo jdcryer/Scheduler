@@ -164,9 +164,9 @@ Case of
 			$vl_schProcess:=SCH_Get_Proc_Number
 			
 			If ($vl_schProcess=0)
-				Execute on server:C373("SCH_RUN_MAIN"; 0)
+				$vl_process:=Execute on server:C373("SCH_RUN_MAIN"; 0)
 			Else 
-				Execute on server:C373("SCH_STOP_MAIN"; 0)
+				$vl_process:=Execute on server:C373("SCH_STOP_MAIN"; 0)
 			End if 
 			
 			OBJECT SET TITLE:C194(*; "bt_StartStop"; Choose:C955(($vl_schProcess=0); "Stop Scheduler"; "Start Scheduler"))
