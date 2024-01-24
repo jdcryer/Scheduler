@@ -1,4 +1,4 @@
-﻿{
+{
 	"$4d": {
 		"version": "1",
 		"kind": "form"
@@ -88,7 +88,7 @@
 						}
 					]
 				},
-				"Button": {
+				"bt_StartStop": {
 					"type": "button",
 					"text": "Start Scheduler",
 					"top": 22,
@@ -97,14 +97,15 @@
 					"height": 25,
 					"events": [
 						"onClick"
-					]
+					],
+					"fontSize": 12
 				},
 				"schedulerTabs": {
 					"type": "tab",
 					"text": "Tab control",
 					"top": 22,
 					"left": 330,
-					"width": 594,
+					"width": 694,
 					"height": 395,
 					"action": "gotoPage",
 					"dataSourceTypeHint": "integer",
@@ -119,33 +120,33 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png",
+					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
 				},
 				"delSchedule": {
 					"type": "pictureButton",
-					"left": 68,
+					"left": 67,
 					"top": 384,
 					"width": 25,
 					"height": 25,
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png",
+					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
 				},
 				"saveSchedule": {
 					"type": "pictureButton",
-					"left": 848,
+					"left": 948,
 					"top": 384,
-					"width": 55,
+					"width": 65,
 					"height": 25,
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/save.png",
+					"picture": "/RESOURCES/images/button/save_blue_25_65.svg",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
 				}
@@ -155,7 +156,7 @@
 			"objects": {
 				"input_name": {
 					"type": "input",
-					"left": 543,
+					"left": 603,
 					"top": 73,
 					"width": 247,
 					"height": 16,
@@ -168,14 +169,14 @@
 					"type": "text",
 					"text": "Name:",
 					"top": 74,
-					"left": 454,
+					"left": 514,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"input_next_launch_date": {
 					"type": "input",
-					"left": 543,
+					"left": 603,
 					"top": 119,
 					"width": 87,
 					"height": 16,
@@ -189,7 +190,7 @@
 					"type": "text",
 					"text": "Next Launch",
 					"top": 98,
-					"left": 454,
+					"left": 514,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -199,14 +200,14 @@
 					"type": "text",
 					"text": "Date:",
 					"top": 120,
-					"left": 454,
+					"left": 514,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"input_next_launch_time": {
 					"type": "input",
-					"left": 723,
+					"left": 783,
 					"top": 119,
 					"width": 67,
 					"height": 16,
@@ -220,14 +221,14 @@
 					"type": "text",
 					"text": "Time:",
 					"top": 120,
-					"left": 674,
+					"left": 734,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"input_process_size": {
 					"type": "input",
-					"left": 543,
+					"left": 603,
 					"top": 151,
 					"width": 87,
 					"height": 16,
@@ -241,14 +242,14 @@
 					"type": "text",
 					"text": "Process Size:",
 					"top": 152,
-					"left": 454,
+					"left": 514,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"non_input_launch_date": {
 					"type": "input",
-					"left": 543,
+					"left": 603,
 					"top": 201,
 					"width": 87,
 					"height": 16,
@@ -260,7 +261,7 @@
 					"type": "text",
 					"text": "Last Launch",
 					"top": 180,
-					"left": 454,
+					"left": 514,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -270,14 +271,14 @@
 					"type": "text",
 					"text": "Date:",
 					"top": 202,
-					"left": 454,
+					"left": 514,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"non_input_launch_time": {
 					"type": "input",
-					"left": 723,
+					"left": 783,
 					"top": 201,
 					"width": 67,
 					"height": 16,
@@ -289,14 +290,14 @@
 					"type": "text",
 					"text": "Time:",
 					"top": 202,
-					"left": 674,
+					"left": 734,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"non_input_complete_date": {
 					"type": "input",
-					"left": 543,
+					"left": 603,
 					"top": 251,
 					"width": 87,
 					"height": 16,
@@ -308,7 +309,7 @@
 					"type": "text",
 					"text": "Last Completed\t",
 					"top": 230,
-					"left": 454,
+					"left": 514,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -318,14 +319,14 @@
 					"type": "text",
 					"text": "Date:",
 					"top": 252,
-					"left": 454,
+					"left": 514,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"non_input_complete_time": {
 					"type": "input",
-					"left": 723,
+					"left": 783,
 					"top": 251,
 					"width": 67,
 					"height": 16,
@@ -337,7 +338,7 @@
 					"type": "text",
 					"text": "Time:",
 					"top": 252,
-					"left": 674,
+					"left": 734,
 					"width": 42,
 					"height": 15,
 					"textAlign": "left"
@@ -345,7 +346,7 @@
 				"popup_launch_date": {
 					"type": "subform",
 					"top": 119,
-					"left": 640,
+					"left": 700,
 					"width": 19,
 					"height": 16,
 					"dataSource": "vd_next_launch",
@@ -357,7 +358,8 @@
 					"selectionMode": "multiple",
 					"printFrame": "variable",
 					"events": [
-						"onLoad"
+						"onLoad",
+						"onDataChange"
 					]
 				}
 			}
@@ -368,14 +370,14 @@
 					"type": "text",
 					"text": "Frequency:",
 					"top": 67,
-					"left": 402,
+					"left": 442,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"dropdown_frequency": {
 					"type": "dropdown",
-					"left": 491,
+					"left": 531,
 					"top": 62,
 					"width": 262,
 					"height": 25,
@@ -386,7 +388,7 @@
 				},
 				"input_frequency": {
 					"type": "input",
-					"left": 491,
+					"left": 531,
 					"top": 100,
 					"width": 87,
 					"height": 16,
@@ -397,7 +399,7 @@
 					"type": "text",
 					"text": "Every:",
 					"top": 101,
-					"left": 402,
+					"left": 442,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -406,7 +408,7 @@
 					"type": "text",
 					"text": "Timing Detail",
 					"top": 287,
-					"left": 402,
+					"left": 442,
 					"width": 102,
 					"height": 15,
 					"textAlign": "left",
@@ -416,7 +418,7 @@
 					"type": "radio",
 					"text": "At:",
 					"top": 311,
-					"left": 402,
+					"left": 442,
 					"width": 84,
 					"height": 15,
 					"events": [
@@ -429,7 +431,7 @@
 					"type": "radio",
 					"text": "At Intervals of:",
 					"top": 311,
-					"left": 642,
+					"left": 682,
 					"width": 102,
 					"height": 15,
 					"events": [
@@ -442,7 +444,7 @@
 					"type": "text",
 					"text": "Day(s)",
 					"top": 101,
-					"left": 597,
+					"left": 637,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -451,7 +453,7 @@
 					"type": "text",
 					"text": "Week(s)",
 					"top": 101,
-					"left": 597,
+					"left": 637,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -460,14 +462,14 @@
 					"type": "text",
 					"text": "Month(s)",
 					"top": 101,
-					"left": 597,
+					"left": 637,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
 				},
 				"input_frequency_time_at": {
 					"type": "input",
-					"left": 491,
+					"left": 531,
 					"top": 310,
 					"width": 87,
 					"height": 16,
@@ -476,7 +478,7 @@
 				},
 				"input_frequency_time_interval": {
 					"type": "input",
-					"left": 764,
+					"left": 804,
 					"top": 310,
 					"width": 87,
 					"height": 16,
@@ -485,7 +487,7 @@
 				},
 				"input_frequency_time_interval_from": {
 					"type": "input",
-					"left": 764,
+					"left": 804,
 					"top": 336,
 					"width": 87,
 					"height": 16,
@@ -494,7 +496,7 @@
 				},
 				"input_frequency_time_interval_to": {
 					"type": "input",
-					"left": 764,
+					"left": 804,
 					"top": 362,
 					"width": 87,
 					"height": 16,
@@ -505,7 +507,7 @@
 					"type": "text",
 					"text": "From:",
 					"top": 337,
-					"left": 658,
+					"left": 698,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -514,7 +516,7 @@
 					"type": "text",
 					"text": "To:",
 					"top": 363,
-					"left": 658,
+					"left": 698,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -523,7 +525,7 @@
 					"type": "text",
 					"text": "On:",
 					"top": 133,
-					"left": 402,
+					"left": 442,
 					"width": 82,
 					"height": 15,
 					"textAlign": "left"
@@ -532,7 +534,7 @@
 					"type": "button",
 					"text": "Monday",
 					"top": 130,
-					"left": 491,
+					"left": 531,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -544,7 +546,7 @@
 					"type": "button",
 					"text": "Tuesday",
 					"top": 130,
-					"left": 581,
+					"left": 621,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -556,7 +558,7 @@
 					"type": "button",
 					"text": "Wednesday",
 					"top": 130,
-					"left": 671,
+					"left": 711,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -568,7 +570,7 @@
 					"type": "button",
 					"text": "Thrusday",
 					"top": 130,
-					"left": 761,
+					"left": 801,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -580,7 +582,7 @@
 					"type": "button",
 					"text": "Friday",
 					"top": 152,
-					"left": 491,
+					"left": 531,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -592,7 +594,7 @@
 					"type": "button",
 					"text": "Saturday",
 					"top": 152,
-					"left": 581,
+					"left": 621,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -604,7 +606,7 @@
 					"type": "button",
 					"text": "Sunday",
 					"top": 152,
-					"left": 671,
+					"left": 711,
 					"width": 89,
 					"height": 21,
 					"events": [
@@ -616,7 +618,7 @@
 					"type": "radio",
 					"text": "On:",
 					"top": 133,
-					"left": 402,
+					"left": 442,
 					"width": 84,
 					"height": 15,
 					"events": [
@@ -629,7 +631,7 @@
 					"type": "button",
 					"text": "1",
 					"top": 130,
-					"left": 491,
+					"left": 531,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -641,7 +643,7 @@
 					"type": "button",
 					"text": "2",
 					"top": 130,
-					"left": 513,
+					"left": 553,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -653,7 +655,7 @@
 					"type": "button",
 					"text": "3",
 					"top": 130,
-					"left": 535,
+					"left": 575,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -665,7 +667,7 @@
 					"type": "button",
 					"text": "4",
 					"top": 130,
-					"left": 557,
+					"left": 597,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -677,7 +679,7 @@
 					"type": "button",
 					"text": "5",
 					"top": 130,
-					"left": 579,
+					"left": 619,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -689,7 +691,7 @@
 					"type": "button",
 					"text": "6",
 					"top": 130,
-					"left": 601,
+					"left": 641,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -701,7 +703,7 @@
 					"type": "button",
 					"text": "7",
 					"top": 130,
-					"left": 623,
+					"left": 663,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -713,7 +715,7 @@
 					"type": "button",
 					"text": "8",
 					"top": 152,
-					"left": 491,
+					"left": 531,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -725,7 +727,7 @@
 					"type": "button",
 					"text": "9",
 					"top": 152,
-					"left": 513,
+					"left": 553,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -737,7 +739,7 @@
 					"type": "button",
 					"text": "10",
 					"top": 152,
-					"left": 535,
+					"left": 575,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -749,7 +751,7 @@
 					"type": "button",
 					"text": "11",
 					"top": 152,
-					"left": 557,
+					"left": 597,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -761,7 +763,7 @@
 					"type": "button",
 					"text": "12",
 					"top": 152,
-					"left": 579,
+					"left": 619,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -773,7 +775,7 @@
 					"type": "button",
 					"text": "13",
 					"top": 152,
-					"left": 601,
+					"left": 641,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -785,7 +787,7 @@
 					"type": "button",
 					"text": "14",
 					"top": 152,
-					"left": 623,
+					"left": 663,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -797,7 +799,7 @@
 					"type": "button",
 					"text": "15",
 					"top": 174,
-					"left": 491,
+					"left": 531,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -809,7 +811,7 @@
 					"type": "button",
 					"text": "16",
 					"top": 174,
-					"left": 513,
+					"left": 553,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -821,7 +823,7 @@
 					"type": "button",
 					"text": "17",
 					"top": 174,
-					"left": 535,
+					"left": 575,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -833,7 +835,7 @@
 					"type": "button",
 					"text": "18",
 					"top": 174,
-					"left": 557,
+					"left": 597,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -845,7 +847,7 @@
 					"type": "button",
 					"text": "19",
 					"top": 174,
-					"left": 579,
+					"left": 619,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -857,7 +859,7 @@
 					"type": "button",
 					"text": "20",
 					"top": 174,
-					"left": 601,
+					"left": 641,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -869,7 +871,7 @@
 					"type": "button",
 					"text": "21",
 					"top": 174,
-					"left": 623,
+					"left": 663,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -881,7 +883,7 @@
 					"type": "button",
 					"text": "22",
 					"top": 196,
-					"left": 491,
+					"left": 531,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -893,7 +895,7 @@
 					"type": "button",
 					"text": "23",
 					"top": 196,
-					"left": 513,
+					"left": 553,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -905,7 +907,7 @@
 					"type": "button",
 					"text": "24",
 					"top": 196,
-					"left": 535,
+					"left": 575,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -917,7 +919,7 @@
 					"type": "button",
 					"text": "25",
 					"top": 196,
-					"left": 557,
+					"left": 597,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -929,7 +931,7 @@
 					"type": "button",
 					"text": "26",
 					"top": 196,
-					"left": 579,
+					"left": 619,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -941,7 +943,7 @@
 					"type": "button",
 					"text": "27",
 					"top": 196,
-					"left": 601,
+					"left": 641,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -953,7 +955,7 @@
 					"type": "button",
 					"text": "28",
 					"top": 196,
-					"left": 623,
+					"left": 663,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -965,7 +967,7 @@
 					"type": "button",
 					"text": "29",
 					"top": 218,
-					"left": 491,
+					"left": 531,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -977,7 +979,7 @@
 					"type": "button",
 					"text": "30",
 					"top": 218,
-					"left": 513,
+					"left": 553,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -989,7 +991,7 @@
 					"type": "button",
 					"text": "31",
 					"top": 218,
-					"left": 535,
+					"left": 575,
 					"width": 21,
 					"height": 21,
 					"events": [
@@ -1001,7 +1003,7 @@
 					"type": "radio",
 					"text": "On the:",
 					"top": 249,
-					"left": 402,
+					"left": 442,
 					"width": 84,
 					"height": 15,
 					"events": [
@@ -1012,7 +1014,7 @@
 				},
 				"freq_monthly_day_num": {
 					"type": "dropdown",
-					"left": 491,
+					"left": 531,
 					"top": 244,
 					"width": 162,
 					"height": 23,
@@ -1023,7 +1025,7 @@
 				},
 				"freq_monthly_day_type": {
 					"type": "dropdown",
-					"left": 689,
+					"left": 729,
 					"top": 244,
 					"width": 162,
 					"height": 23,
@@ -1080,7 +1082,7 @@
 							"footer": {
 								"name": "Footer4"
 							},
-							"width": 70,
+							"width": 73,
 							"enterable": false
 						}
 					]
@@ -1103,9 +1105,10 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png",
+					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"visibility": "hidden"
 				},
 				"delParam": {
 					"type": "pictureButton",
@@ -1116,9 +1119,10 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png",
+					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"switchBackWhenReleased": true,
-					"loopBackToFirstFrame": true
+					"loopBackToFirstFrame": true,
+					"visibility": "hidden"
 				},
 				"addTask": {
 					"type": "pictureButton",
@@ -1129,7 +1133,7 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/add.png",
+					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"switchContinuously": false,
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
@@ -1143,7 +1147,7 @@
 					"events": [
 						"onClick"
 					],
-					"picture": "/RESOURCES/images/del.png",
+					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true
 				},
@@ -1151,7 +1155,7 @@
 					"type": "listbox",
 					"left": 643,
 					"top": 92,
-					"width": 260,
+					"width": 360,
 					"height": 282,
 					"events": [
 						"onClick",
@@ -1169,6 +1173,19 @@
 					"columns": [
 						{
 							"header": {
+								"name": "Header7",
+								"text": "Label",
+								"dataSource": ""
+							},
+							"name": "Column1",
+							"dataSource": "This:C1470.label",
+							"width": 113,
+							"footer": {
+								"name": "Footer7"
+							}
+						},
+						{
+							"header": {
 								"text": "Value",
 								"name": "Header5"
 							},
@@ -1177,7 +1194,7 @@
 								"name": "Footer5"
 							},
 							"dataSource": "This:C1470.displayValue",
-							"width": 168,
+							"width": 157,
 							"events": [
 								"onClick"
 							],
@@ -1194,7 +1211,7 @@
 							"footer": {
 								"name": "Footer6"
 							},
-							"width": 70,
+							"width": 73,
 							"events": [
 								"onClick"
 							],
@@ -1205,6 +1222,14 @@
 			}
 		}
 	],
-	"geometryStamp": 719,
-	"method": "method.4dm"
+	"geometryStamp": 966,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"menuBar": "Barre #1"
 }
