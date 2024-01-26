@@ -122,7 +122,8 @@
 					],
 					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"rowCount": 4
 				},
 				"delSchedule": {
 					"type": "pictureButton",
@@ -135,7 +136,8 @@
 					],
 					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"rowCount": 4
 				},
 				"saveSchedule": {
 					"type": "pictureButton",
@@ -148,7 +150,8 @@
 					],
 					"picture": "/RESOURCES/images/button/save_blue_25_65.svg",
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"rowCount": 4
 				}
 			}
 		},
@@ -1108,7 +1111,8 @@
 					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"loopBackToFirstFrame": true,
 					"switchBackWhenReleased": true,
-					"visibility": "hidden"
+					"visibility": "hidden",
+					"rowCount": 4
 				},
 				"delParam": {
 					"type": "pictureButton",
@@ -1122,7 +1126,8 @@
 					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"switchBackWhenReleased": true,
 					"loopBackToFirstFrame": true,
-					"visibility": "hidden"
+					"visibility": "hidden",
+					"rowCount": 4
 				},
 				"addTask": {
 					"type": "pictureButton",
@@ -1136,7 +1141,8 @@
 					"picture": "/RESOURCES/images/button/plus_blue_25.svg",
 					"switchContinuously": false,
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"rowCount": 4
 				},
 				"delTask": {
 					"type": "pictureButton",
@@ -1149,7 +1155,8 @@
 					],
 					"picture": "/RESOURCES/images/button/delete_red_25.svg",
 					"loopBackToFirstFrame": true,
-					"switchBackWhenReleased": true
+					"switchBackWhenReleased": true,
+					"rowCount": 4
 				},
 				"lb_parameters": {
 					"type": "listbox",
