@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"shared":true}
 // ----------------------------------------------------
 // User name (OS): Dougie
 // Date and time: 03/05/21, 10:47:32
@@ -17,7 +17,7 @@ C_BOOLEAN:C305($vb_abort)
 $vt_procHandle:="Scheduler Main"
 $vl_schProcess:=Process number:C372($vt_procHandle)
 If ($vl_schProcess=0)
-	$vl_schProcess:=New process:C317("SCH_RUN_MAIN"; 64000; $vt_procHandle; *)
+	$vl_schProcess:=New process:C317("SCH_RUN_MAIN"; 0; $vt_procHandle; *)
 Else 
 	
 	Use (Storage:C1525.schedule)
@@ -27,7 +27,7 @@ Else
 	Repeat 
 		$vc_schRunning:=Storage:C1525.schedule.running
 		$es_schedule:=ds:C1482["schedule"].query("status == :1 && nextLaunch <= :2"; \
-			1; String:C10(Current date:C33(*); ISO date:K1:8; Current time:C178(*))).minus(ds:C1482.schedule.query("id in :1"; $vc_schRunning))  //Get all the active schedules that need to run.
+			1; String:C10(Current date:C33(*); ISO date:K1:8; Current time:C178(*))).minus(ds:C1482["schedule"].query("id in :1"; $vc_schRunning))  //Get all the active schedules that need to run.
 		For each ($e_schedule; $es_schedule)  //Loop for each schedule found
 			$vb_abort:=False:C215
 			If (Storage:C1525.schedule.state#0)
